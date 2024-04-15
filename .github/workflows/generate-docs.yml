@@ -98,6 +98,9 @@ jobs:
           docsBranch="${{ steps.generate-docs.outputs.docs-branch }}"
           git push origin "$docsBranch:$docsBranch"
           gh pr create --base master --head "$docsBranch" --fill
+      - name: git status
+        run: |
+          git status
       - name: Merge changes
         if: github.event.inputs.publish-mode == 'auto-merge'
         run: |
